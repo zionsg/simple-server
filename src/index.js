@@ -9,6 +9,7 @@ const http = require('http');
 
 let server = http.createServer((request, response) => {
     let method = request.method;
+
     if ('GET' === method) {
         response.statusCode = 200;
         response.setHeader('Content-Type', 'text/html');

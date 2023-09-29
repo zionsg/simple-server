@@ -8,7 +8,7 @@ Access at: http://localhost:10000
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import sys
 
-class WebServer(BaseHTTPRequestHandler):
+class RequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.send_header("Content-Type", "text/html")
@@ -28,13 +28,13 @@ class WebServer(BaseHTTPRequestHandler):
         html = "<pre>" + request_body + "</pre>"
         self.wfile.write(bytes(html, "utf8"))
     # end def do_POST
-# end class WebServer
+# end class RequestHandler
 
 def run():
     host = "localhost"
     port = int(sys.argv[1]) if (len(sys.argv) > 1) else 10000
 
-    server = HTTPServer((host, port), WebServer)
+    server = HTTPServer((host, port), RequestHandler)
     print("Server started at http://%s:%s" % (host, port))
 
     try:

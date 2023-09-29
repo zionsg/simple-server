@@ -7,6 +7,7 @@
  */
 
 $method = $_SERVER['REQUEST_METHOD'];
+
 if ('GET' === $method) {
     echo 'Hello PHP World';
 } else if ('POST' === $method) {
